@@ -1,6 +1,7 @@
 async function fetchMetrics() {
     try {
-        const response = await fetch('http://localhost:8000/metrics');
+        // Fetch from the live Render backend
+        const response = await fetch('https://pranavaayu-backend-sgtm.onrender.com/metrics');
         const data = await response.json();
         updateUI(data);
     } catch (error) {
