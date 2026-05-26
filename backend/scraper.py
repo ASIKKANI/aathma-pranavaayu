@@ -1,39 +1,35 @@
-from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup
+import urllib.request
+import json
 import time
-import re
 
 def get_air_metrics():
     metrics_keys = ["AQI", "PM1", "PM2.5", "PM4", "PM10", "CO2", "TVOC", "NOx", "Temperature", "Humidity"]
     metrics = {k: "0" for k in metrics_keys}
     
+    url = "https://nippoairvue.live/api/dashsvc/tvview"
+    
+    # Send a tiny POST request to the hidden API directly! (Instant & zero heavy browsers needed)
+    req = urllib.request.Request(url, method="POST")
+    req.add_header("x-auth-key", "yWhemB3q")
+    req.add_header("Content-Type", "application/json")
+    
     try:
-        with sync_playwright() as p:
-            # Add arguments to help Chromium run smoothly in cloud environments
-            browser = p.chromium.launch(
-                headless=True,
-                args=["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
-            )
-            page = browser.new_page()
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read().decode('utf-8'))
             
-            # Navigate and wait for the network to be idle
-            page.goto("https://nippoairvue.live/tvview/yWhemB3q", wait_until="networkidle", timeout=45000)
+            p_vals = data.get("data", {}).get("pollutantValues", {}).get("pollutantValues", {})
             
-            # Wait for JS to render the dashboard values
-            print(f"[{time.strftime('%H:%M:%S')}] Rendering dashboard JS...")
-            time.sleep(10)
-            
-            content = page.content()
-            browser.close()
-            
-            soup = BeautifulSoup(content, 'html.parser')
-            all_text = soup.get_text(separator=' ', strip=True)
-            
-            for key in metrics_keys:
-                pattern = rf"{re.escape(key)}\s+([\d\.]+)"
-                match = re.search(pattern, all_text, re.IGNORECASE)
-                if match:
-                    metrics[key] = match.group(1)
+            if p_vals:
+                metrics["AQI"] = str(p_vals.get("aqi", {}).get("value", "0"))
+                metrics["PM1"] = str(p_vals.get("PM1", {}).get("value", "0"))
+                metrics["PM2.5"] = str(p_vals.get("PM2.5", {}).get("value", "0"))
+                metrics["PM4"] = str(p_vals.get("PM4", {}).get("value", "0"))
+                metrics["PM10"] = str(p_vals.get("PM10", {}).get("value", "0"))
+                metrics["CO2"] = str(p_vals.get("CO2", {}).get("value", "0"))
+                metrics["TVOC"] = str(p_vals.get("TVOC", {}).get("value", "0"))
+                metrics["NOx"] = str(p_vals.get("NOx", {}).get("value", "0"))
+                metrics["Temperature"] = str(p_vals.get("TEMPERATURE", {}).get("value", "0"))
+                metrics["Humidity"] = str(p_vals.get("HUMIDITY", {}).get("value", "0"))
 
         return metrics
     except Exception as e:
@@ -41,5 +37,5 @@ def get_air_metrics():
         return {k: "0" for k in metrics_keys}
 
 if __name__ == "__main__":
-    print("Executing Hard-Fix Playwright Scraper...")
+    print("Executing Lightning-Fast API Scraper...")
     print(get_air_metrics())
