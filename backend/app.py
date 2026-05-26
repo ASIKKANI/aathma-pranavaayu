@@ -47,7 +47,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-# Enable CORS for local development
+# Enable CORS for local and production deployment
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -55,6 +55,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+def home():
+    """Health check endpoint for the root URL"""
+    return {"status": "ok", "message": "Backend API is running. Go to /metrics for data."}
 
 @app.get("/metrics")
 def get_metrics():
