@@ -9,7 +9,11 @@ def get_air_metrics():
     
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            # Add arguments to help Chromium run smoothly in cloud environments
+            browser = p.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+            )
             page = browser.new_page()
             
             # Navigate and wait for the network to be idle
