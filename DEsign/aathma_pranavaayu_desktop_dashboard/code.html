@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aathma Pranavaayu | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F7FCF2; /* sage-wash */
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        @media (min-width: 1280px) {
+            .bento-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .span-2 { grid-column: span 2; }
+            .row-2 { grid-row: span 2; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-fixed": "#151e12",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "status-satisfactory": "#FFB800",
+                        "deep-navy": "#1A3066",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-container": "#8fde7f",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed": "#dce6d2",
+                        "primary-container": "#166313",
+                        "surface-container": "#eeeeee",
+                        "primary-fixed-dim": "#8bd97b",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dce6d2",
+                        "on-tertiary-fixed-variant": "#30447b",
+                        "surface-dim": "#dadada",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#a6f694",
+                        "surface-tint": "#226d1c",
+                        "secondary-fixed-dim": "#c0cab7",
+                        "inverse-primary": "#8bd97b",
+                        "secondary": "#586152",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#b9c9ff",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#40493b",
+                        "tertiary-fixed-dim": "#b3c5ff",
+                        "on-tertiary-fixed": "#00184a",
+                        "tertiary-container": "#3f538b",
+                        "on-primary-fixed": "#002201",
+                        "error": "#ba1a1a",
+                        "outline": "#707a6b",
+                        "inverse-surface": "#2f3131",
+                        "on-surface-variant": "#40493c",
+                        "on-primary-fixed-variant": "#005304",
+                        "background": "#f9f9f9",
+                        "status-good": "#2D8A29",
+                        "primary": "#004903",
+                        "surface-container-highest": "#e2e2e2",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#273b72",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-container": "#5e6758",
+                        "surface-container-lowest": "#ffffff",
+                        "sage-wash": "#F7FCF2",
+                        "on-error-container": "#93000a",
+                        "status-poor": "#E67E22",
+                        "outline-variant": "#c0cab9",
+                        "sky-accent": "#2EA3F2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "section-gap": "120px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-sage-wash text-on-surface min-h-screen">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-sage-wash border-r border-outline-variant z-50 py-8 px-4">
+<div class="mb-10 px-2">
+<img alt="Aathma Pranavaayu Logo" class="h-12 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiPkTu8xtlSEHEVM6zw_EbVb4EnA3moFrTK4PjjB2gjrPtncrg77iAMcR0dl5i15MnjKpD6aHDu0heVAbMJCPPhV0Wuu-eg1WuSQJoNsDZOZZM68eXyuFs_VVYAEKdifFniGXW9DB5jM7QfrnFrsfSFuQhGFQl3hbU5xeJc5i0o4SGgbJqZeHtdWd7_8vcJmfS4Eo9GjIMy6C82gxpV5fnWAenKaW3HfOSa4YGdBimgEPyjqILEPHEmwMMe"/>
+<p class="mt-4 font-label-sm text-label-sm text-on-surface-variant">Device ID: AP-9921</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg text-label-lg">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-label-lg text-label-lg">Air Purifier</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">history_toggle_off</span>
+<span class="font-label-lg text-label-lg">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-lg text-label-lg">Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<div class="mt-auto bg-primary-container p-4 rounded-2xl text-white">
+<p class="font-label-lg text-label-lg font-bold mb-1">Breathe Deep</p>
+<p class="text-xs opacity-80 mb-3">Your air quality is currently optimal.</p>
+<button class="w-full py-2 bg-primary text-white rounded-lg font-label-lg text-label-lg hover:brightness-110 transition-all">Support</button>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-full lg:pl-64 z-40 bg-surface/80 backdrop-blur-md shadow-sm h-20 px-margin-mobile md:px-margin-desktop flex justify-between items-center">
+<div class="flex flex-col lg:hidden">
+<img alt="Logo" class="h-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiPkTu8xtlSEHEVM6zw_EbVb4EnA3moFrTK4PjjB2gjrPtncrg77iAMcR0dl5i15MnjKpD6aHDu0heVAbMJCPPhV0Wuu-eg1WuSQJoNsDZOZZM68eXyuFs_VVYAEKdifFniGXW9DB5jM7QfrnFrsfSFuQhGFQl3hbU5xeJc5i0o4SGgbJqZeHtdWd7_8vcJmfS4Eo9GjIMy6C82gxpV5fnWAenKaW3HfOSa4YGdBimgEPyjqILEPHEmwMMe"/>
+</div>
+<h1 class="hidden lg:block font-headline-md text-headline-md font-extrabold text-primary">Aathma Pranavaayu</h1>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 mr-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors focus-within:ring-2 focus-within:ring-primary rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors focus-within:ring-2 focus-within:ring-primary rounded-full">
+<span class="material-symbols-outlined">wifi</span>
+</button>
+</div>
+<div class="flex items-center gap-3 border-l pl-4 border-outline-variant">
+<div class="text-right hidden sm:block">
+<p class="font-label-lg text-label-lg font-bold">John Doe</p>
+<p class="text-xs text-on-surface-variant">Premium Member</p>
+</div>
+<div class="h-10 w-10 rounded-full bg-secondary-container overflow-hidden border border-primary/20">
+<img alt="John Doe Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiPgzMQ9S6Qk6hyAnWZp1e4P_SZMQjpFvPWAmj_25TzMHNQ1PHBDzyBBa7xWlvgsBOgh1huFUObdrJUgQsR5c5E-SsKyXGOqoS6_MIjGB8HFjmQYQu40tQwQALXx0Iw03G2Tu8r-YaQwNumVNE-B5d8DGb-A-MuQ3J0I89CVXngtlZTiLjZRUhzzVe9oIbLcm-eaqSrbbZIIom1Yo5Shj9xPnSdrpzoRRXgt8fyLDytXhzGS3bcJ_0Cdp6gjNaILOyJyum6K9X1MNB"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 lg:pl-64 min-h-screen relative overflow-hidden">
+<!-- Nature Overlay Background -->
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="A lush green forest landscape with filtered sunlight through tree canopies and a gentle morning mist over a calm lake. The scene is serene, reflecting a deep connection to nature and pure air, with soft greens and earthy tones dominating the palette." src="https://lh3.googleusercontent.com/aida/ADBb0uhcdlNDHZnGncRnjfqMQVb_ksSDc5yZTrwJVeCApbWUV9IFSCaIXgVolp8MGoAyftpl0IbGsxtDixunj07qTY3tmoyptSL80ZJPWPzWx4Bp90dn9nOYiQcwLMqWevH2TBiNNn47Gu-yM8yi8fmrEYsvxPIb3LPM_H-qvtX5ntYa7W0Pyl6CMTAQwRtfYT_4UfY9F5lCmF8Ly78wGlXBxJnYO-kCj0P86P4_s4lGSb62og97i9uTaYCsI0WI"/>
+</div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto">
+<!-- Hero Hero Section - Bento Start -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+<!-- AQI Master Gauge -->
+<div class="lg:col-span-2 bg-white/60 glass-card p-8 rounded-3xl border border-outline-variant shadow-[0_4px_30px_rgba(45,138,41,0.05)] flex flex-col md:flex-row items-center gap-8">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<!-- Simplified SVG Gauge -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-secondary-container" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-status-good" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552" stroke-dashoffset="440" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline-xl text-headline-xl text-primary leading-none">20</span>
+<span class="font-label-lg text-label-lg text-status-good uppercase tracking-widest font-bold">Good</span>
+</div>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Air quality is excellent today.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Your Pranavaayu system has processed 420 liters of pure air in the last hour. Breathing is effortless.</p>
+<div class="flex flex-wrap gap-3">
+<span class="inline-flex items-center gap-1 px-4 py-1.5 bg-status-good/10 text-status-good rounded-full font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span> Perfect Condition
+                            </span>
+<span class="inline-flex items-center gap-1 px-4 py-1.5 bg-sky-accent/10 text-sky-accent rounded-full font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-sm">water_drop</span> 71% Humidity
+                            </span>
+</div>
+</div>
+</div>
+<!-- Active Device Card -->
+<div class="bg-primary p-8 rounded-3xl text-white shadow-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-9xl" style="font-variation-settings: 'wght' 700;">eco</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg opacity-80 mb-1">Active Device</p>
+<h3 class="font-headline-md text-headline-md font-bold mb-4">Living Room Tower</h3>
+<div class="flex items-center gap-2 mb-6">
+<span class="h-2 w-2 rounded-full bg-primary-fixed animate-pulse"></span>
+<span class="font-label-sm text-label-sm">System Running Smoothly</span>
+</div>
+</div>
+<button class="w-full py-4 bg-white text-primary rounded-2xl font-bold font-label-lg text-label-lg hover:bg-sage-wash transition-all active:scale-95">
+                        Manage Device
+                    </button>
+</div>
+</div>
+<!-- Metrics Bento Grid -->
+<div class="bento-grid">
+<!-- PM Series (Main Group) -->
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">filter_drama</span>
+</div>
+<span class="text-status-good font-bold font-label-lg text-label-lg">Good</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">PM1</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">8</h4>
+<span class="text-sm text-on-surface-variant">µg/m³</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">air</span>
+</div>
+<span class="text-status-good font-bold font-label-lg text-label-lg">Good</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">PM2.5</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">12</h4>
+<span class="text-sm text-on-surface-variant">µg/m³</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">waves</span>
+</div>
+<span class="text-status-satisfactory font-bold font-label-lg text-label-lg">Fair</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">PM4</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">15</h4>
+<span class="text-sm text-on-surface-variant">µg/m³</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">bubble_chart</span>
+</div>
+<span class="text-status-satisfactory font-bold font-label-lg text-label-lg">Fair</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">PM10</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">16</h4>
+<span class="text-sm text-on-surface-variant">µg/m³</span>
+</div>
+</div>
+<!-- Environmental Metrics -->
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">co2</span>
+</div>
+<span class="text-status-good font-bold font-label-lg text-label-lg">Good</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">CO2</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">516</h4>
+<span class="text-sm text-on-surface-variant">ppm</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">science</span>
+</div>
+<span class="text-status-good font-bold font-label-lg text-label-lg">Good</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">TVOC</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">87</h4>
+<span class="text-sm text-on-surface-variant">ppb</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<span class="text-on-surface-variant font-bold font-label-lg text-label-lg">Normal</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Temperature</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">31</h4>
+<span class="text-sm text-on-surface-variant">°C</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/50 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">humidity_mid</span>
+</div>
+<span class="text-sky-accent font-bold font-label-lg text-label-lg">Humid</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Humidity</p>
+<div class="flex items-baseline gap-1 mt-1">
+<h4 class="font-headline-md text-headline-md text-primary">71</h4>
+<span class="text-sm text-on-surface-variant">%</span>
+</div>
+</div>
+<!-- NOx Spanning Multiple Columns in Desktop -->
+<div class="bg-white p-6 rounded-3xl border border-outline-variant hover:shadow-xl transition-all duration-300 group md:col-span-2 xl:col-span-2 flex items-center gap-8">
+<div class="p-5 bg-secondary-container/50 rounded-2xl text-primary group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-4xl">cloud_queue</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Nitrogen Oxides (NOx)</p>
+<div class="flex items-baseline gap-2">
+<h4 class="font-headline-lg text-headline-lg text-primary">1</h4>
+<span class="text-sm text-on-surface-variant">µg/m³</span>
+<span class="ml-4 px-3 py-1 bg-status-good/10 text-status-good rounded-full font-bold font-label-sm text-label-sm">EXTREMELY LOW</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Taskbar/Info -->
+<div class="mt-section-gap grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white/40 p-8 rounded-[40px] border border-outline-variant/30 glass-card">
+<div>
+<h5 class="font-headline-md text-headline-md text-primary mb-2">Inspired by Nature, Designed for Future</h5>
+<p class="font-body-md text-body-md text-on-surface-variant">Powered by nature’s own elements, our purifier naturally cleans the air, ensuring every breath you take brings you closer to a healthier world.</p>
+</div>
+<div class="flex justify-end gap-4">
+<button class="px-8 py-3 bg-secondary-container text-primary rounded-full font-bold font-label-lg text-label-lg hover:bg-outline-variant transition-all">Download Reports</button>
+<button class="px-8 py-3 bg-primary text-white rounded-full font-bold font-label-lg text-label-lg hover:brightness-110 transition-all">Support Live Chat</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="fixed bottom-0 w-full lg:hidden bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(45,138,41,0.08)] h-16 flex justify-around items-center px-4 z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary bg-secondary-container/50 rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-sage-wash transition-all" href="#">
+<span class="material-symbols-outlined">air</span>
+<span class="font-label-sm text-label-sm">Devices</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-sage-wash transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-sage-wash transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Contextual FAB -->
+<button class="fixed bottom-20 right-6 lg:bottom-10 lg:right-10 bg-primary text-white p-5 rounded-3xl shadow-2xl hover:scale-105 transition-all z-40 active:scale-95">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

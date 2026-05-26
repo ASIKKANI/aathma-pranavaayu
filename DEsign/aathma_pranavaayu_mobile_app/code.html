@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Aathma Pranavaayu | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-fixed": "#151e12",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "status-satisfactory": "#FFB800",
+                        "deep-navy": "#1A3066",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-container": "#8fde7f",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed": "#dce6d2",
+                        "primary-container": "#166313",
+                        "surface-container": "#eeeeee",
+                        "primary-fixed-dim": "#8bd97b",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dce6d2",
+                        "on-tertiary-fixed-variant": "#30447b",
+                        "surface-dim": "#dadada",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#a6f694",
+                        "surface-tint": "#226d1c",
+                        "secondary-fixed-dim": "#c0cab7",
+                        "inverse-primary": "#8bd97b",
+                        "secondary": "#586152",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#b9c9ff",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#40493b",
+                        "tertiary-fixed-dim": "#b3c5ff",
+                        "on-tertiary-fixed": "#00184a",
+                        "tertiary-container": "#3f538b",
+                        "on-primary-fixed": "#002201",
+                        "error": "#ba1a1a",
+                        "outline": "#707a6b",
+                        "inverse-surface": "#2f3131",
+                        "on-surface-variant": "#40493c",
+                        "on-primary-fixed-variant": "#005304",
+                        "background": "#f9f9f9",
+                        "status-good": "#2D8A29",
+                        "primary": "#004903",
+                        "surface-container-highest": "#e2e2e2",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#273b72",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-container": "#5e6758",
+                        "surface-container-lowest": "#ffffff",
+                        "sage-wash": "#F7FCF2",
+                        "on-error-container": "#93000a",
+                        "status-poor": "#E67E22",
+                        "outline-variant": "#c0cab9",
+                        "sky-accent": "#2EA3F2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "section-gap": "120px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atmospheric-shadow {
+            box-shadow: 0 20px 40px -10px rgba(45, 138, 41, 0.08);
+        }
+        .glass-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-sage-wash text-on-surface font-body-md selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-full z-40 bg-surface/80 glass-blur flex justify-between items-center h-20 px-margin-mobile">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container">
+<img alt="Aathma Pranavaayu Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiPkTu8xtlSEHEVM6zw_EbVb4EnA3moFrTK4PjjB2gjrPtncrg77iAMcR0dl5i15MnjKpD6aHDu0heVAbMJCPPhV0Wuu-eg1WuSQJoNsDZOZZM68eXyuFs_VVYAEKdifFniGXW9DB5jM7QfrnFrsfSFuQhGFQl3hbU5xeJc5i0o4SGgbJqZeHtdWd7_8vcJmfS4Eo9GjIMy6C82gxpV5fnWAenKaW3HfOSa4YGdBimgEPyjqILEPHEmwMMe"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Aathma Pranavaayu</h1>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary" data-icon="wifi">wifi</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-md mx-auto">
+<!-- Hero AQI Indicator Section -->
+<section class="mb-10 text-center">
+<div class="relative inline-block">
+<svg class="w-48 h-48 transform -rotate-90">
+<circle class="text-secondary-container" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-status-good" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="442" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-xl text-headline-xl text-primary leading-none">20</span>
+<span class="font-label-lg text-label-lg text-status-good mt-1 uppercase tracking-widest">Good</span>
+</div>
+</div>
+<div class="mt-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Fresh Air,</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The way nature intended</p>
+</div>
+</section>
+<!-- Device Status Overview Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 mb-8 atmospheric-shadow">
+<div class="flex items-center justify-between mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active Device</p>
+<p class="font-headline-md text-headline-md text-primary">Garden Air Tower</p>
+</div>
+<div class="bg-primary-container/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-status-good" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-good"></span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">Purifying active for 4h 12m</span>
+</div>
+</div>
+<!-- Metrics Bento Grid -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<!-- PM Cluster -->
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-5 atmospheric-shadow">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="air">air</span>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Particulate Matter</h3>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">PM1</p>
+<p class="font-body-md text-body-md font-bold">1.2</p>
+</div>
+<div class="text-center border-l border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">PM2.5</p>
+<p class="font-body-md text-body-md font-bold">4.8</p>
+</div>
+<div class="text-center border-l border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">PM4</p>
+<p class="font-body-md text-body-md font-bold">5.1</p>
+</div>
+<div class="text-center border-l border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">PM10</p>
+<p class="font-body-md text-body-md font-bold">8.4</p>
+</div>
+</div>
+</div>
+<!-- CO2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 atmospheric-shadow flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-2" data-icon="cloud">cloud</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">CO2</p>
+</div>
+<div>
+<span class="font-headline-md text-headline-md font-bold">412</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ppm</span>
+</div>
+</div>
+<!-- TVOC -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 atmospheric-shadow flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-2" data-icon="science">science</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">TVOC</p>
+</div>
+<div>
+<span class="font-headline-md text-headline-md font-bold">0.08</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">mg/m³</span>
+</div>
+</div>
+<!-- Temp & Humidity -->
+<div class="col-span-2 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 atmospheric-shadow flex items-center gap-4">
+<span class="material-symbols-outlined text-sky-accent" data-icon="device_thermostat">device_thermostat</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Temp</p>
+<p class="font-body-md text-body-md font-bold">24°C</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 atmospheric-shadow flex items-center gap-4">
+<span class="material-symbols-outlined text-sky-accent" data-icon="humidity_low">humidity_low</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Humidity</p>
+<p class="font-body-md text-body-md font-bold">58%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Section -->
+<section class="mb-8">
+<button class="w-full bg-primary text-on-primary font-label-lg py-4 rounded-xl atmospheric-shadow flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="discovery_tune">discover_tune</span>
+                DISCOVER CLEAN AIR
+            </button>
+</section>
+<!-- Nature Insight Section -->
+<div class="relative overflow-hidden rounded-xl h-48 atmospheric-shadow mb-8 group">
+<img alt="Forest Atmosphere" class="absolute inset-0 w-full h-full object-cover" data-alt="A lush, sun-drenched forest with golden rays of light filtering through the dense canopy of ancient green trees. The atmosphere is hazy with moisture and pure oxygen, creating a serene and revitalizing mood. The visual style is premium and natural, emphasizing deep forest greens and soft earth tones consistent with a high-end wellness brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9VotIP8Q6Kn6-ua6d90yPVMpeDGXuYVeG--6v8GVR0KrK8hhwzt13wPIjQ4rEVrNdKhwcQ3s9x857KS5AsCkP9wH0JYmkBpWCIJnxFM-WxYg-pUG-GaM4TmdtbzW1_Boewdxy9Mky2R9JAQl_8qqI9sI49JtBiRe4xJhf4z28VF1FonnNjeaOmtZBK1TsnSQz4NYtYdtPv3t25JfSwuvRfpzlqjJ-oDNg82yZ73aac5RCRVR9rzImgXelttAXfC6M1U4NS7XHC51D"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-6">
+<h4 class="font-label-lg text-label-lg text-white mb-1">CLIMATE STABILIZATION</h4>
+<p class="font-label-sm text-label-sm text-on-primary-container leading-tight">Protecting the Planet, One Breath at a Time.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full lg:hidden rounded-t-xl z-50 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(45,138,41,0.08)]">
+<div class="flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center text-primary bg-secondary-container/50 rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-sage-wash transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="font-label-sm text-label-sm">Devices</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-sage-wash transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-sage-wash transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Floating Action Button - Supressed as per Task Intent for Dashboard focus -->
+</body></html>
